@@ -4,12 +4,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     static String userInputValue = ""; //유저 입력 변수
-    static String[] textSeparator = new String[]{",", ":", ""};
+    static String[] textSeparator = new String[]{",|", ":|", ""};//구분자
+    static String[] userInputValueTextSeparator;//구분자로 나눠진 유저입력값
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         userInput();
         customTextSeparator();
+        userInputValueTextSeparator = getTextSplit();
 
     }
 
@@ -29,6 +31,7 @@ public class Application {
             String ctSeparator = userInputValue.substring(userInputValue.indexOf("//") + 2,
                     userInputValue.indexOf("\\n"));
             textSeparator[2] = ctSeparator;
+            userInputValue = userInputValue.substring(userInputValue.indexOf("\\n") + 2);
         }
     }
 
@@ -44,5 +47,11 @@ public class Application {
         return false;
     }
 
+    /**
+     * 문자열을 구분자로 나누는 기능
+     */
+    public static String[] getTextSplit() {
+        return userInputValue.split(textSeparator[0] + textSeparator[1] + textSeparator[2]);
+    }
 
 }
