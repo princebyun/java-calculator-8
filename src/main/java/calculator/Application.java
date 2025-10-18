@@ -6,6 +6,7 @@ public class Application {
     static String userInputValue = ""; //유저 입력 변수
     static String[] textSeparator = new String[]{",|", ":|", ""};//구분자
     static String[] userInputValueTextSeparator;//구분자로 나눠진 유저입력값
+    static int resultValue = 0;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -13,7 +14,18 @@ public class Application {
         customTextSeparator();
         userInputValueTextSeparator = getTextSplit();
         checkValue();
+        valueSum();
     }
+
+    /**
+     * 구분자로 나눠진 숫자를 합하는 기능
+     */
+    public static void valueSum() {
+        for (String s : userInputValueTextSeparator) {
+            resultValue += Integer.parseInt(s);
+        }
+    }
+
 
     /**
      * 문자열 받는 기능
@@ -59,7 +71,8 @@ public class Application {
      */
     public static void checkValue() {
         for (int i = 0; i < userInputValueTextSeparator.length; i++) {
-            checkString(userInputValueTextSeparator[i].trim(), i);
+            userInputValueTextSeparator[i] = userInputValueTextSeparator[i].trim();
+            checkString(userInputValueTextSeparator[i], i);
         }
     }
 
