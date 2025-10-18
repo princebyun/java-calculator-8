@@ -15,7 +15,16 @@ public class Application {
         userInputValueTextSeparator = getTextSplit();
         checkValue();
         valueSum();
+        result();
     }
+
+    /**
+     * 결과값을 표출하는 기능
+     */
+    public static void result() {
+        System.out.println("결과 : " + resultValue);
+    }
+
 
     /**
      * 구분자로 나눠진 숫자를 합하는 기능
@@ -85,7 +94,7 @@ public class Application {
                 int parseIntVal = Integer.parseInt(val);
                 checkNegative(parseIntVal);
             }
-        } catch (NullPointerException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
