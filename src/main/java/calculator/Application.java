@@ -12,7 +12,7 @@ public class Application {
         userInput();
         customTextSeparator();
         userInputValueTextSeparator = getTextSplit();
-
+        checkValue();
     }
 
     /**
@@ -53,5 +53,49 @@ public class Application {
     public static String[] getTextSplit() {
         return userInputValue.split(textSeparator[0] + textSeparator[1] + textSeparator[2]);
     }
+
+    /**
+     * 구분자로 나눠진 값  밸리데이션 기능
+     */
+    public static void checkValue() {
+        for (int i = 0; i < userInputValueTextSeparator.length; i++) {
+            checkString(userInputValueTextSeparator[i].trim(), i);
+        }
+    }
+
+    /**
+     * 문자체크
+     */
+    public static void checkString(String val, int i) {
+        try {
+            if (changeTrim(val, i)) {
+                int parseIntVal = Integer.parseInt(val);
+                checkNegative(parseIntVal);
+            }
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 빈문자 0으로 치환
+     */
+    public static boolean changeTrim(String val, int i) {
+        if (val.equals("")) {
+            userInputValueTextSeparator[i] = "0";
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 음수체크
+     */
+    public static void checkNegative(int val) {
+        if (val < 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 
 }
