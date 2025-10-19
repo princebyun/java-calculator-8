@@ -5,8 +5,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     static String userInputValue = ""; //유저 입력 변수
     static String[] textSeparator = new String[]{",|", ":|", ""};//구분자
+    static String ctSeparator = "";//커스텀구분자
     static String[] userInputValueTextSeparator;//구분자로 나눠진 유저입력값
-    static int resultValue = 0;
+    static int resultValue = 0;//결과값
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -48,13 +49,24 @@ public class Application {
      * 구분자를 커스텀 생성 기능
      */
     public static void customTextSeparator() {
-        if (checkCustomTextSeparator()) {
-            String ctSeparator = userInputValue.substring(userInputValue.indexOf("//") + 2,
-                    userInputValue.indexOf("\\n"));
+        if (checkCustomTextSeparator() && charStringCheck()) {
             textSeparator[2] = ctSeparator;
             userInputValue = userInputValue.substring(userInputValue.indexOf("\\n") + 2);
         }
     }
+
+    /**
+     * 구분자가 문자열인지 문자인지 체크
+     */
+    public static boolean charStringCheck() {
+        ctSeparator = userInputValue.substring(userInputValue.indexOf("//") + 2,
+                userInputValue.indexOf("\\n"));
+        if (ctSeparator.length() > 1) {
+            return false;
+        }
+        return true;
+    }
+
 
     /**
      * 커스텀 구분자가 있는지 확인하는 기능
