@@ -61,7 +61,7 @@ public class Application {
     public static boolean charStringCheck() {
         ctSeparator = userInputValue.substring(userInputValue.indexOf("//") + 2,
                 userInputValue.indexOf("\\n"));
-        if (ctSeparator.length() > 1) {
+        if (ctSeparator.length() > 1 || ctSeparator.trim().equals("")) {
             return false;
         }
         return true;
@@ -130,6 +130,5 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
-
 
 }
