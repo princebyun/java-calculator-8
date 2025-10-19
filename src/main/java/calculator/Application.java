@@ -7,7 +7,7 @@ public class Application {
     static String[] textSeparator = new String[]{",|", ":|", " "};//구분자
     static String ctSeparator = "";//커스텀구분자
     static String[] userInputValueTextSeparator;//구분자로 나눠진 유저입력값
-    static int resultValue = 0;//결과값
+    static double resultValue = 0;//결과값
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -23,7 +23,12 @@ public class Application {
      * 결과값을 표출하는 기능
      */
     public static void result() {
-        System.out.println("결과 : " + resultValue);
+        if (resultValue % 1 == 0) {
+            System.out.println("결과 : " + (long) resultValue);
+        }
+        if (resultValue % 1 > 0) {
+            System.out.println("결과 : " + resultValue);
+        }
     }
 
 
@@ -32,7 +37,7 @@ public class Application {
      */
     public static void valueSum() {
         for (String s : userInputValueTextSeparator) {
-            resultValue += Integer.parseInt(s);
+            resultValue += Double.parseDouble(s);
         }
     }
 
@@ -103,7 +108,7 @@ public class Application {
     public static void checkString(String val, int i) {
         try {
             if (changeTrim(val, i)) {
-                int parseIntVal = Integer.parseInt(val);
+                double parseIntVal = Double.parseDouble(val);
                 checkNegative(parseIntVal);
             }
         } catch (NumberFormatException e) {
@@ -125,7 +130,7 @@ public class Application {
     /**
      * 음수체크
      */
-    public static void checkNegative(int val) {
+    public static void checkNegative(double val) {
         if (val < 0) {
             throw new IllegalArgumentException();
         }
