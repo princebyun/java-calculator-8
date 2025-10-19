@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     static String userInputValue = ""; //유저 입력 변수
-    static String[] textSeparator = new String[]{",|", ":|", ""};//구분자
+    static String[] textSeparator = new String[]{",|", ":|", " "};//구분자
     static String ctSeparator = "";//커스텀구분자
     static String[] userInputValueTextSeparator;//구분자로 나눠진 유저입력값
     static int resultValue = 0;//결과값
