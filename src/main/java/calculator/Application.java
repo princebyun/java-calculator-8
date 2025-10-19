@@ -74,7 +74,7 @@ public class Application {
     public static boolean checkCustomTextSeparator() {
         boolean valueFlag1 = userInputValue.contains("//");
         boolean valueFlag2 = userInputValue.contains("\\n");
-        if (valueFlag1 && valueFlag2) {
+        if (valueFlag1 && valueFlag2 && userInputValue.indexOf("//") == 0) {
             return true;
         }
         return false;
