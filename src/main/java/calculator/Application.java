@@ -2,6 +2,8 @@ package calculator;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.regex.Pattern;
+
 public class Application {
     static String userInputValue = ""; //유저 입력 변수
     static String[] textSeparator = new String[]{",|", ":|", " "};//구분자
@@ -89,7 +91,7 @@ public class Application {
      * 문자열을 구분자로 나누는 기능
      */
     public static String[] getTextSplit() {
-        return userInputValue.split(textSeparator[0] + textSeparator[1] + textSeparator[2]);
+        return userInputValue.split(textSeparator[0] + textSeparator[1] + Pattern.quote(textSeparator[2]));
     }
 
     /**
